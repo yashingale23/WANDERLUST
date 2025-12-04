@@ -18,10 +18,12 @@ const getCoordinates = async (location) => {
 };
 
 module.exports.index = async (req, res) => {
-  let { q } = req.query;
+  let { q, category } = req.query;
   let allListings;
   if (q) {
     allListings = await Listing.find({ title: { $regex: q, $options: "i" } });
+  } else if (category) {
+    allListings = await Listing.find({ category: { $in: [category] } });
   } else {
     allListings = await Listing.find({});
   }

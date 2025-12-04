@@ -42,6 +42,10 @@ const listingSchema = new Schema({
       type: [Number],
       // required: true
     }
+  },
+  category: {
+    type: [String],
+    enum: ['Iconic cities', 'Mountain', 'Castles', 'Pool', 'Farms', 'Camping', 'Arctic', 'Domes', 'Boats', 'Beach', 'Amazing views', 'Skiing']
   }
 });
 
