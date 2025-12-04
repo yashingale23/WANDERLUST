@@ -1,19 +1,22 @@
 <style>
-  .btn-search{
+  .btn-search {
     background-color: #fe424d;
     color: #fff;
     border-radius: 25px;
     padding: 0 1rem 0 1rem;
   }
-  .btn-search:hover{
+
+  .btn-search:hover {
     background-color: #fe424d;
     color: #fff;
   }
-  .btn-search i{
+
+  .btn-search i {
     display: inline;
     margin-right: 0.5rem;
   }
-  .saerch-inp{
+
+  .saerch-inp {
     border-radius: 25px;
     padding: 0.5rem 3 0.5rem 3rem;
     font-size: 1rem;
@@ -31,23 +34,24 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link" href="/listings">Explore</a>
-        <!-- <a class="nav-link" href="/listings/new">Add new Listings</a> -->
       </div>
       <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 saerch-inp" type="search" placeholder="Search Destinations" >
+        <form class="d-flex" role="search" action="/listings" method="GET">
+          <input class="form-control me-2 saerch-inp" type="search" name="q" placeholder="Search Destinations">
           <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
         </form>
       </div>
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">Add new Listings</a>
-        <% if(!curr) { %>
-          <a class="nav-link " href="/signup"><b>Sign up</b></a>
-          <a class="nav-link" href="/login"><b>Login</b></a>
-        <% } %>  
-        <% if(curr) { %>   
-          <a class="nav-link" href="/logout">Logout</a>
-        <% } %> 
+        <% if(curr && curr.role==='owner' ) { %>
+          <a class="nav-link" href="/listings/new">Add new Listings</a>
+          <% } %>
+            <% if(!curr) { %>
+              <a class="nav-link " href="/signup"><b>Sign up</b></a>
+              <a class="nav-link" href="/login"><b>Login</b></a>
+              <% } %>
+                <% if(curr) { %>
+                  <a class="nav-link" href="/logout">Logout</a>
+                  <% } %>
       </div>
     </div>
   </div>
